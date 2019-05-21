@@ -38,7 +38,7 @@ _In the example above I've created a rule using the id `3357` from  the Postfix 
 
 Edit the ossec.conf - `/var/ossec/etc/ossec.conf`:
 
-Add a new `command` block:
+Add a new `command` section:
 ```
   <command>
     <name>opnsense-ban</name>
@@ -47,7 +47,7 @@ Add a new `command` block:
   </command>
 ```
 
-Add a new `active-response` block:
+Add a new `active-response` section:
 
 ```
   <active-response>
