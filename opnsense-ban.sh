@@ -34,15 +34,21 @@ if [ "x${IP}" = "x" ]; then
    exit 1;
 fi
 
+# Check action
+if [ "$ACTION" == "add" ]; then
+    URL_ACTION="add"
+else
+    URL_ACTION="delete"
+fi
 
 # Configuration
 KEY="YOURKEY"
 SECRET="TELLMEYOURSECRET"
-URL="https://<OPNSENSE_IPADDR>/api/firewall/alias_util/add/wazuh_activeresponse"
+URL="https://<OPNSENSE_IPADDR>/api/firewall/alias_util/${URL_ACTION}/wazuh_activeresponse"
 BLOCKIP="$IP"
 
 
 #  
 PAYLOAD='{"address": "'$BLOCKIP'"}'
 
-curl -XPOST -d "$PAYLOAD" -H "Content-Type: application/json" -k -u "$KEY":"$SECRET" $URL
+curl -XPOST -d "$PAYLOAD" -H "Content-Type: application/json" -k -u "$KEY":"$SECRET" "$URL"
