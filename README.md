@@ -3,24 +3,24 @@ Tools to integrate 2 great security tools OPNsense and Wazuh
 
 ### OPNsense-ban.sh
 
-Ban an offensor IP from a host with wazuh agent installed in the OPNsense (perimeter) firewall via API call triggered by wazuh/ossec agent active response feature.
+Ban an offender IP from a host with a wazuh agent installed in the OPNsense (perimeter) firewall via API calls triggered by wazuh/ossec agent active response feature.
 
-**Pre requisites**
+**Prerequisites**
 
--**Make sure that your Wazuh Server and OPNsense has your Whitelist IPs configured or you can be banned from your own Firewall!**
+-**Make sure that your Wazuh Server and OPNsense has your Whitelist IPs configured, or you can be banned from your own Firewall!**
 
 -OPNsense Firewall in network perimeter
 
--Wazuh Server and at least one Host with Wazuh Agent (tested on Linux) installed (with active response enabled) - not tested on OSSEC, but it will probabilly work too.
+-Wazuh Server and at least one Host with Wazuh Agent (tested on Linux) installed (with active response enabled) - not tested on OSSEC, but it will probably work too.
 
 
 **OPNsense Firewall steps**
 
 -Create a Firewall Alias with the name `wazuh_activeresponse`
 
--Create a block rule in WAN interface with the Alias created in the last step and put it in the `Source` option
+-Create a block rule in the WAN interface with the Alias created in the last step and put it in the `Source` option
 
--Create an user and enable the API in it. Instructions here: https://docs.opnsense.org/development/how-tos/api.html
+-Create a user and enable the API in it. Instructions here: https://docs.opnsense.org/development/how-tos/api.html
 
 **Wazuh server steps**
 
@@ -34,7 +34,7 @@ Create a custom rule in `/var/ossec/etc/rules/local_rules.xml`
   </rule>
 ```
 
-_In the example above I've created a rule using the id `3357` from  the Postfix ruleset to block any offender IP that matches 3 times within 3 hours._ 
+_In the example above, I've created a rule using the id `3357` from the Postfix ruleset to block any offender IP that matches 3 times within 3 hours._ 
 
 Edit the ossec.conf - `/var/ossec/etc/ossec.conf`:
 
